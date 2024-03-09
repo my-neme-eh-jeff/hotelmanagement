@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.1",
     "@ant-design/nextjs-registry": "^1.0.0",
+    "@nextui-org/spinner": "^2.0.25",
     "antd": "^5.15.1",
     "axios": "^1.6.7",
     "dayjs": "^1.11.10",
