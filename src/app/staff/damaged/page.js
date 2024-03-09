@@ -12,7 +12,7 @@ const Damaged = () => {
         setSelectedImage(file);
 
         const formData = new FormData();
-        formData.append('image', file);
+        formData.append('file', file);
 
         const requestOptions = {
             method: "POST",
@@ -20,11 +20,22 @@ const Damaged = () => {
             redirect: "follow"
         };
 
-        fetch("http://localhost:5000/damaged", requestOptions)
-            .then((response) => response.json())
+        // fetch("http://localhost:5000/damaged", requestOptions)
+        //     .then((response) => response.json())
+        //     .then((result) => {
+        //         console.log(result.data[1].isAnythingBroken)
+        //         setDamagedData(result.data);
+        //     })
+        //     .catch((error) => console.error(error));
+        
+        fetch("https://c296-34-143-239-229.ngrok-free.app/predictor2/", requestOptions)
+            .then((response) => response.text())
             .then((result) => {
-                console.log(result.data[1].isAnythingBroken)
-                setDamagedData(result.data);
+                console.log("Done");
+                console.log(result);
+                // console.log(result.data)
+                setSelectedImage(result)
+                
             })
             .catch((error) => console.error(error));
     };
