@@ -52,11 +52,9 @@ export default function SideBarMenu() {
     const getData = async () => {
       try {
         setLoading(true);
-        let { data } = await axios.get(`http://localhost:3000/api/staff-data`);
-        data = data.data;
-        // const { data } = await axios.get(
-        //   `https://48a8-2402-3a80-42a1-1a62-316e-4862-bd0b-afed.ngrok-free.app/inventory/staff/`
-        // );
+        let { data } = await axios.get(
+          `https://loc6.pythonanywhere.com/inventory/staff/`
+        );
         const seniorStaffItems = data.senior.map((member: any) =>
           getItem(member.name, `${member.id}`)
         );
