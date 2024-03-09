@@ -37,7 +37,7 @@ export default function AdminPageLayout({
   );
   return (
     <AntdRegistry>
-      <Layout className="!min-h-screen">
+      <Layout className="!min-h-screen overflow-x-clip">
         <SidebarComponent collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout>
           <Header style={{ padding: 0, background: colorBgContainer }} className="flex justify-between place-items-center">

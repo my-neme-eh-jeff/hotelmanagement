@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 // Define types for TypeScript (optional but recommended for better type checking)
 type MenuItem = Required<MenuProps>["items"][number];
@@ -28,9 +29,12 @@ type StaffData = {
 // Main component
 export default function SideBarMenu() {
   const router = useRouter();
+  const path = usePathname();
+
   const handlingNavigation = (e: any) => {
-    if (e.keypath.length > 1) {
-      router.push("staffanalytics" + `${e.key}`);
+    console.log(e);
+    if (e.keyPath.length > 1) {
+      router.push("/admin/staffanalytics/" + `${e.key}`);
     } else {
       if (e.key === "inventory") {
         router.push(e.key);
@@ -62,6 +66,7 @@ export default function SideBarMenu() {
         const dynamicItems: MenuItem[] = [
           getItem("Analytics", "analytics", <BarChartOutlined />),
           getItem("Inventory", "inventory", <MenuOutlined />),
+          getItem("Scheduling Checks", "scheduling-checks", <MenuOutlined />),
           getItem("Staff", "staff", <UserOutlined />, [
             getItem("Senior Staff", "senior", null, seniorStaffItems),
             getItem("Entry Level Staff", "entry", null, entryLevelStaffItems),
@@ -86,7 +91,6 @@ export default function SideBarMenu() {
         setLoading(false);
       }
     };
-
     getData();
   }, []);
 
@@ -107,15 +111,15 @@ export default function SideBarMenu() {
   }
 
   return loading ? (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen bg-white">
       <Loader2 className="animate-spin" />
     </div>
   ) : (
     <Menu
       onClick={(e) => handlingNavigation(e)}
-      className="!min-h-screen bg-white"
+      className="!min-h-screen bg-white h-full"
       mode="inline"
-      defaultSelectedKeys={["1"]}
+      defaultSelectedKeys={[path.split("/").pop()?.toString() || ""]}
       items={menuItems}
     />
   );
