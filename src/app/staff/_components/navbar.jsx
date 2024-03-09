@@ -8,10 +8,10 @@ const Navbar = () => {
     <div className="flex border-[1px] justify-between h-[60px] py-[10px] shadow-lg px-[15px]">
       <div
         className="flex gap-x-[10px] items-center"
-        onClick={() => router.push("/")}
+        onClick={() => {router.push("/staff")}}
       >
         <img className="h-[40px] w-[40px]" src="/assets/logo.png"></img>
-        <p className="text-[20px] flex w-full font-bold">HomeDecore</p>
+        <p className="text-[20px] flex w-full font-bold">HomeDecor</p>
       </div>
       <img
         className="h-[40px] w-[40px] rounded-full"
