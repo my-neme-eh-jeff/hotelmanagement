@@ -64,7 +64,8 @@ export default function AdminPageLayout({
               />
             </Dropdown>
           </Header>
-          <Content
+          <main className="m-6">{children}</main>
+          {/* <Content
             style={{
               margin: "24px 16px",
               background: colorBgContainer,
@@ -72,7 +73,7 @@ export default function AdminPageLayout({
             }}
           >
             <main className="m-6">{children}</main>
-          </Content>
+          </Content> */}
         </Layout>
       </Layout>
     </AntdRegistry>
