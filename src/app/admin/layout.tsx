@@ -8,7 +8,7 @@ import {
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Avatar, Button, Dropdown, Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
-import SidebarComponent from "./_components/SideBar";
+import SidebarComponent from "@/app/admin/_components/SideBarComponent";
 
 const { Header, Content } = Layout;
 
@@ -40,7 +40,10 @@ export default function AdminPageLayout({
       <Layout className="!min-h-screen overflow-x-clip">
         <SidebarComponent collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout>
-          <Header style={{ padding: 0, background: colorBgContainer }} className="flex justify-between place-items-center">
+          <Header
+            style={{ padding: 0, background: colorBgContainer }}
+            className="flex justify-between place-items-center"
+          >
             <Button
               type="text"
               style={{
