@@ -1,6 +1,7 @@
 
 export default function AnalyticsPage() {
   return (
-    <div>page</div>
+    <div className="text-5xl font-thin">page</div>
   )
 }
+
