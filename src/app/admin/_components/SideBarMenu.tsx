@@ -16,16 +16,6 @@ import { usePathname } from "next/navigation";
 // Define types for TypeScript (optional but recommended for better type checking)
 type MenuItem = Required<MenuProps>["items"][number];
 
-type StaffMember = {
-  id: number;
-  name: string;
-};
-
-type StaffData = {
-  senior: StaffMember[];
-  entry: StaffMember[];
-};
-
 // Main component
 export default function SideBarMenu() {
   const router = useRouter();
@@ -37,9 +27,9 @@ export default function SideBarMenu() {
       router.push("/admin/staffanalytics/" + `${e.key}`);
     } else {
       if (e.key === "inventory") {
-        router.push(e.key);
+        router.push("/" + e.key);
       } else {
-        router.push(e.key);
+        router.push("/" + e.key);
       }
     }
   };
@@ -62,7 +52,7 @@ export default function SideBarMenu() {
           getItem(member.name, `${member.id}`)
         );
         const dynamicItems: MenuItem[] = [
-          getItem("Analytics", "analytics", <BarChartOutlined />),
+          getItem("Analytics", "admin/analytics", <BarChartOutlined />),
           getItem("Inventory", "inventory", <MenuOutlined />),
           getItem("Scheduling Checks", "scheduling-checks", <MenuOutlined />),
           getItem("Staff", "staff", <UserOutlined />, [
