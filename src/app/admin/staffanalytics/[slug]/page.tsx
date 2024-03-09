@@ -1,5 +1,7 @@
 import AllStaffBarChart from "../../_components/AllStaffBarChart";
 
+
+
 export default function StaffAnalyticsPage({
   params,
 }: {
@@ -8,7 +10,7 @@ export default function StaffAnalyticsPage({
 
   return (
     <>
-
+  
     </>
   );
 }
