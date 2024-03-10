@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Room, Inventory, Staff
-from .serializer import RoomSerializer, InventortSerializer, StaffSerailizer
+from .models import Room, Inventory, Staff, Floor
+from .serializer import RoomSerializer, InventortSerializer, StaffSerailizer, FloorSerializer, StaffSerailizer2
 from rest_framework.generics import GenericAPIView, CreateAPIView, ListAPIView
 from rest_framework.views import APIView
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, UpdateModelMixin, RetrieveModelMixin
@@ -56,3 +56,18 @@ class StaffApi(GenericAPIView, ListModelMixin):
         staff_entry_data = self.serializer_class(self.queryset.filter(staff_type = 'entry'), many = True)
         staff = {'senior' : [staff for staff in staff_senior_data.data], 'entry': [staff for staff in staff_entry_data.data]}
         return Response(staff)
+    
+class FloorApi(GenericAPIView, ListModelMixin):
+    serializer_class = FloorSerializer
+    queryset = Floor.objects
+    
+    def get(self, request):
+        return self.list(request)
+    
+class StaffApi2(GenericAPIView, RetrieveModelMixin):
+    serializer_class = StaffSerailizer2
+    queryset = Staff.objects
+    lookup_field = 'id'
+    
+    def get(self, request, id):
+        return self.retrieve(request, id)

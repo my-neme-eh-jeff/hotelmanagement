@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Room, Inventory, Staff
+from .models import Room, Inventory, Staff, Floor
 
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,3 +20,13 @@ class StaffSerailizer(serializers.ModelSerializer):
         data = super().to_representation(instance)
         del data['staff_type']
         return data
+    
+class FloorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Floor
+        fields = '__all__'
+
+class StaffSerailizer2(serializers.ModelSerializer):
+    class Meta:
+        model = Staff
+        fields = '__all__'

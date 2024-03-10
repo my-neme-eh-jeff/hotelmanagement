@@ -1,8 +1,13 @@
 from django.db import models
 
 # Create your models here.
+class Floor(models.Model):
+    floor_no = models.BigIntegerField()
+
 class Room(models.Model):
+    floor = models.ForeignKey(Floor, on_delete = models.CASCADE)
     room_id = models.BigIntegerField()
+    room_details = models.JSONField()
 
 class Inventory(models.Model):
     room = models.ForeignKey(Room, on_delete = models.CASCADE)
@@ -15,6 +20,4 @@ staff_choice = [('senior', 'senior'), ('entry', 'entry')]
 class Staff(models.Model):
     staff_type = models.CharField(max_length =50, choices=staff_choice)
     name = models.CharField(max_length = 100)
-
-# class StaffAssignedRoom(models.Model):
-#     room = models.
+    room = models.ForeignKey(Room, on_delete = models.CASCADE)
