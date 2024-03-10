@@ -84,18 +84,18 @@ const HomePage = () => {
               
             >
               <div className="w-[60px] h-[60px] flex justify-center items-center rounded-full border-[1px] border-gray-300">
-                <img className="w-[40px]" src="assets/warning.png" />
+                {/* <img className="w-[40px]" src="assets/warning.png" /> */}
               </div>
-              <p className="font-bold text-gray-600">Report</p>
+              <p className="font-bold text-gray-600">Bot</p>
             </div>
             <div
               className="flex w-[33%] flex-col items-center"
              
             >
               <div className="w-[60px] h-[60px] flex justify-center items-center rounded-full border-[1px] border-gray-300">
-                <img className="w-[40px]" src="assets/rice.png" />
+                {/* <img className="w-[40px]" src="assets/rice.png" /> */}
               </div>
-              <p className="font-bold text-gray-600">Alternate Food</p>
+              <p className="font-bold text-gray-600">Concat</p>
             </div>
             {/* <div className="flex w-[33%] flex-col items-center">
               <div className="w-[60px] h-[60px] flex justify-center items-center rounded-full border-[1px] border-gray-300">
