@@ -22,7 +22,7 @@ const Damaged = () => {
             redirect: "follow",
         };
 
-        fetch("https://e6bb-34-143-233-30.ngrok-free.app/predictor2/", requestOptions)
+        fetch("https://5af4-34-173-238-94.ngrok-free.app/predictor/", requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log("Done");
@@ -34,38 +34,24 @@ const Damaged = () => {
         })
         .catch((error) => console.error(error));
 
-        const formData1 = new FormData();
-        formData1.append('image', file);
-
-        const requestOptions1 = {
-            method: "POST",
-            body: formData1,
-            redirect: "follow",
-        };
-       
-        fetch("http://localhost:5000/damaged", requestOptions1)
-            .then((response) => response.json())
-            .then((result) => {
-                console.log(result.data[1].isAnythingBroken)
-                setDamagedData(result.data);
-            })
-            .catch((error) => console.error(error));
+        
         
        
     };
 
     return (
-        <div className='mt-[30px]'>
-            <div className='flex justify-center font-bold items-center mb-[30px] text-[30px]'>Detect Damage</div>
-            <Timeline mode="alternate" 
+        <div className='mt-[30px] '>
+            <div className='flex justify-center font-bold items-center mb-[30px] text-[30px]'>IDEAL IMAGE</div>
+            <Timeline mode="left"
             items={[
                 {
+                    label: 'Uploaded Image',
                     children: (
                         <>
                             {selectedImage ?
                                 <img src={URL.createObjectURL(selectedImage)} alt="image" className="w-[160px] h-[200px]" />
                                 :
-                                <div className="p-4 border-[3px] border-dotted border-gray-300 rounded-lg bg-gray-100 text-center flex flex-col justify-center items-center ">
+                                <div className="p-4 border-[3px] border-dotted border-gray-300 rounded-lg bg-gray-100 text-center flex flex-col justify-center items-center w-[160px] ">
                                     <h2 className="text-l font-semibold ">Image Upload</h2>
                                     <label className="flex flex-col justify-center items-center mt-4 ">
                                         <div className="cursor-pointer border-2 border-dotted h-[70%] w-[100%] border-gray-400 px-2 rounded-lg bg-white py-[30px]">
@@ -96,36 +82,15 @@ const Damaged = () => {
                     ),
                 },
                 {
+                    label: 'Ideal Image',
                     children: url !== "" ? (
                         <>
-                             <img src={url} alt="image" className="w-[160px] h-[150px] ml-[13px]" />
+                             <img src={url} alt="image" className="w-[160px] h-[200px] mr-[13px] mt-[10px]" />
                         </>
                     ) : null,
                     color: 'green',
                 },
-                {
-                    children: data.length !== 0 ? (
-                        <>
-                            <div className='p-3 border boder-gray rounded-[15px]  text-left'>
-                                <div className='flex flex-wrap mb-[10px]'>
-                                    {data[0].items.map((item, index) => (
-                                        <div key={index} className='h-[30px] text-[#5c9af1] px-1 text-[15px] font-bold rounded-[2px] ml-[5px] mb-[5px] border border-[#5c9af1]'>
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-                                {data[1].isAnythingBroken == "yes" ? (<>
-                                    <div className='py-[5px] text-[15px] font-bold'>Brkoen Object:  {data[2].brokenObjects[0]}</div>
-                                    <div className='py-[5px] text-[15px] font-bold'>Cost of Replacement for {data[2].brokenObjects[0]} is {data[3].cost}</div>
-                                </>) : (<>
-                                    <div className='py-[5px] text-[15px] font-bold'>Nothing is Broken</div>
-                                </>)}
-
-                            </div>
-                        </>
-                    ) : null,
-                    color: 'green',
-                },
+               
                 
             ]} />
         </div>
