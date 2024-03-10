@@ -11,7 +11,7 @@ const Navbar = () => {
         onClick={() => router.push("/staff")}
       >
         <img className="h-[40px] w-[40px]" src="/assets/logo.png"></img>
-        <p className="text-[20px] flex w-full font-bold">HomeDecore</p>
+        <p className="text-[18px] flex w-full font-bold">Atithi Devo Bhava</p>
       </div>
       <img
         className="h-[40px] w-[40px] rounded-full"
