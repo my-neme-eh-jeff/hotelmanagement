@@ -54,8 +54,8 @@ export default function SideBarMenu() {
         );
         const dynamicItems: MenuItem[] = [
           getItem("Analytics", "admin/analytics", <BarChartOutlined />),
-          getItem("Inventory", "inventory", <MenuOutlined />),
-          getItem("Scheduling Checks", "scheduling-checks", <MenuOutlined />),
+          getItem("Inventory", "staff/inventory", <MenuOutlined />),
+          getItem("Scheduling Checks", "admin/scheduling-checks", <MenuOutlined />),
           getItem("Staff", "staff", <UserOutlined />, [
             getItem("Senior Staff", "senior", null, seniorStaffItems),
             getItem("Entry Level Staff", "entry", null, entryLevelStaffItems),
