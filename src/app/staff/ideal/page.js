@@ -21,7 +21,7 @@ const Damaged = () => {
             body: formData,
         };
 
-        fetch("https://af28-34-127-78-162.ngrok-free.app/predictor/", requestOptions)
+        fetch("https://f49d-34-125-248-186.ngrok-free.app/predictor/", requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log("Done");

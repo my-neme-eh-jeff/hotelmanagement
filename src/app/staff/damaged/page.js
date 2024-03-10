@@ -22,7 +22,7 @@ const Damaged = () => {
             body: formData,
         };
         setLoading1(true)
-        fetch("https://de2f-34-122-22-153.ngrok-free.app/predictor2/", requestOptions)
+        fetch("https://85ce-34-125-211-164.ngrok-free.app/predictor2/", requestOptions)
             .then((response) => response.json())
             .then((result) => {
                 console.log("Done");
