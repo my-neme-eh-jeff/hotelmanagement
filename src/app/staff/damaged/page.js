@@ -20,7 +20,6 @@ const Damaged = () => {
         const requestOptions = {
             method: "POST",
             body: formData,
-            redirect: "follow",
         };
         setLoading1(true)
         fetch("https://de2f-34-122-22-153.ngrok-free.app/predictor2/", requestOptions)
