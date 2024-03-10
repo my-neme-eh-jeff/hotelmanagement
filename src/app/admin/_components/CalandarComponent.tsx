@@ -1,3 +1,4 @@
+"use client"
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import dayjs from "dayjs";
 

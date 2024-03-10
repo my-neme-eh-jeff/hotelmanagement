@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Rate } from "antd";
-import { Loader2 } from "lucide-react";
 import { ScaleLoader } from "react-spinners";
+import { Tooltip } from "@nextui-org/tooltip";
+import "./styles.css";
 
 const Analytics = () => {
   const [reviewData, setReviewData] = useState([]);
@@ -13,7 +14,9 @@ const Analytics = () => {
       try {
         setLoadingForReviewData(true);
         const { data } = await axios.get("http://localhost:3002/reviews");
-        console.log(data);
+        //reverse this data
+        data.reverse();
+        console.log(data)
         setReviewData(data);
       } catch (err) {
         console.log(err);
@@ -199,9 +202,7 @@ const Analytics = () => {
         <div className="bg-white rounded-lg py-[15px] px-[20px] w-[40%]">
           <h1 className="text-xl text-gray-600 mb-[20px]">Customer Feedback</h1>
           <div
-            className="max-h-[200px] overflow-y-auto"
-            style={{ scrollbarWidth: "none", "-ms-overflow-style": "none" }}
-          >
+            className="max-h-[200px] overflow-y-auto">
             {loadingForReviewData ? (
               <div className="flex justify-center items-center ">
                 <ScaleLoader color="#2563eb" />
@@ -218,12 +219,29 @@ const Analytics = () => {
                       disabled
                       defaultValue={item.rating}
                     />
-                    <p className="text-gray-500">{item.nameofPerson}</p>
+                    <p className="text-gray-500">
+                      {item.nameofPerson} {" (Room" + item.roomNumber + ") "}
+                    </p>
                     <p className="text-gray-500 font-light truncate">
                       {item.review}
                     </p>
                   </div>
-                  <p className="text-gray-500">{"Room" + item.roomNumber}</p>
+                  <Tooltip
+                    content={
+                      <div className="justify-center relative p-4 pt-2 overflow-hidden rounded-xl border text-blue-500 border-neutral-300 bg-neutral-100 dark:border-neutral-700 dark:bg-stone-100 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.7)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat shadow-2xl dark:shadow-zinc-900 hover:bg-[position:200%_0,0_0] hover:duration-[1500ms]">
+                        <div className="flex justify-center text-small font-semibold">
+                          Staff Assigned: {item.staffName}
+                        </div>
+                        <div className="text-tiny">
+                          This review was generated on 10th February, 2024
+                        </div>
+                      </div>
+                    }
+                  >
+                    <p className="text-gray-500 truncate inline">
+                      <p className="underline inline">Read More</p>
+                    </p>
+                  </Tooltip>
                 </div>
               ))
             )}

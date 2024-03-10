@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Image, Select, Modal } from "antd";
 import { Tooltip } from "@nextui-org/tooltip";
 
@@ -8,6 +8,12 @@ export default function SchedulingChecks() {
   const [rooms, setRooms] = useState(8);
   const [open, setOpen] = useState(false);
   const heightInREM = 24;
+  const [loading, setLoading] = useState(true);
+  useEffect(()=>{
+    async function getData(){
+      
+    }
+  },[])
   const showModal = () => {
     setOpen(true);
   };
@@ -22,7 +28,7 @@ export default function SchedulingChecks() {
       <Tooltip
         placement={leftOrNot ? "left" : "right"}
         content={
-          <div className="justify-center relative p-4 pt-0 overflow-hidden rounded-xl border border-neutral-300 bg-neutral-200 dark:border-neutral-700 dark:bg-cyan-300 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.7)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat shadow-2xl dark:shadow-zinc-900 hover:bg-[position:200%_0,0_0] hover:duration-[1500ms]">
+          <div className="justify-center relative p-4 pt-2 overflow-hidden rounded-xl border border-neutral-300 bg-neutral-200 dark:border-neutral-700 dark:bg-cyan-300 bg-[linear-gradient(45deg,transparent_25%,rgba(68,68,68,.7)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat shadow-2xl dark:shadow-zinc-900 hover:bg-[position:200%_0,0_0] hover:duration-[1500ms]">
             <div className="flex justify-center text-small font-semibold">
               Room 101
             </div>
