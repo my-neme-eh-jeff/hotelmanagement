@@ -37,7 +37,7 @@ const HomePage = () => {
         </div>
         <div className="flex mb-[20px] px-[10px] gap-x-[20px]">
           <div
-            className="w-[50%] rounded-[20px] p-[10px] border-[1px] rounded-lg"
+            className="w-[50%] rounded-[20px] p-[10px] border-[1px] rounded-lg cursor-pointer"
             onClick={() => router.push("/staff/damaged")}
           >
             <img
@@ -49,7 +49,7 @@ const HomePage = () => {
             </p>
           </div>
           <div
-            className="w-[50%] rounded-[20px] p-[10px] items-center border-[1px] rounded-lg"
+            className="w-[50%] rounded-[20px] p-[10px] items-center border-[1px] rounded-lg cursor-pointer"
             onClick={() => router.push("/staff/inventory")}
           >
             <img
@@ -65,16 +65,15 @@ const HomePage = () => {
           <img className="w-[60px] h-[60px] rounded-[50%]" src="./assets/room1.jpg" />
           <div>
             <p className="text-gray-600">
-              Get AI generated recipies considering your preference and
-              allergies
+              Get an AI generated ideal image of a Dull, Messy Room.
             </p>
             <a
               onClick={() => {
-                router.push("/recipes");
+                router.push("/staff/ideal");
               }}
               className="bold text-blue-500 font-bold"
             >
-              Get Recipes &rarr;{" "}
+              Get Image &rarr;{" "}
             </a>
           </div>
         </div>
