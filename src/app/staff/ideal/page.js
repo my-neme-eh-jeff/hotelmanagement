@@ -19,10 +19,9 @@ const Damaged = () => {
         const requestOptions = {
             method: "POST",
             body: formData,
-            redirect: "follow",
         };
 
-        fetch("https://edfb-34-127-78-162.ngrok-free.app/predictor/", requestOptions)
+        fetch("https://af28-34-127-78-162.ngrok-free.app/predictor/", requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log("Done");
