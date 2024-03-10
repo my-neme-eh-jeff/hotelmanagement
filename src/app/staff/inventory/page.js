@@ -11,6 +11,7 @@ const axios = require('axios');
 const Inventory = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModal1Open, setIsModal1Open] = useState(false);
+    const [isT, setT] = useState("False");
     const [isModal2Open, setIsModal2Open] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -156,6 +157,7 @@ const Inventory = () => {
                 .then((result) => {
                     console.log(result)
                     setToilet(result.data)
+                    setT("True")
                 })
                 .catch((error) => console.error(error));
         } else {
@@ -411,7 +413,13 @@ const Inventory = () => {
                         </button>
                     )}
                 </div>
+               {isT=="True" ? (<>
 
+               <div className='text-[15px] font-bold m-[4px]'>ToothBrush:{Toilet[0].Toothbrush}</div>
+               <div className='text-[15px] font-bold m-[4px]'>Soap:{Toilet[2].Soap}</div>
+               <div className='text-[15px] font-bold m-[4px]'>Shampoo:{Toilet[1].Shampoo}</div>
+               
+               </>): null}
             </Modal>
         </div>
     )
