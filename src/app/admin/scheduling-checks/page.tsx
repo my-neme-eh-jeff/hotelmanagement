@@ -151,7 +151,6 @@ export default function SchedulingChecks() {
         </div>
       ) : (
         <div className="flex flex-col justify-center mt-12 mb-6 gap-10">
-          
           {!loading && (
             <Select
               className="w-80 !mx-auto justify-center"
