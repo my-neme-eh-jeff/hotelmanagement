@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { Timeline } from 'antd';
+import { Checkbox } from 'antd';
 
 const Damaged = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -17,7 +18,6 @@ const Damaged = () => {
         const requestOptions = {
             method: "POST",
             body: formData,
-            redirect: "follow"
         };
 
         // fetch("http://localhost:5000/damaged", requestOptions)
@@ -28,8 +28,8 @@ const Damaged = () => {
         //     })
         //     .catch((error) => console.error(error));
         
-        fetch("https://c296-34-143-239-229.ngrok-free.app/predictor2/", requestOptions)
-            .then((response) => response.text())
+        fetch("https://3041-34-143-239-229.ngrok-free.app/predictor2/", requestOptions)
+            .then((response) => response.json())
             .then((result) => {
                 console.log("Done");
                 console.log(result);

@@ -2,19 +2,34 @@
 "use client";
 import React,{ useState,useEffect } from "react"; // Import default styles
 import { useRouter } from "next/navigation";
+import { Checkbox } from 'antd';
 
 const HomePage = () => {
   
   const router = useRouter();
-  
+  const onChange = (e) => {
+    console.log(`checked = ${e.target.checked}`);
+  };  
 
   return (
     <>
       <div className="mt-[20px] flex flex-col justify-center items-center">
-        <div className="rounded-[10px] w-[95%] h-[220px] bg-white mb-4 flex justify-evenly items-center border bottom-1 ">
-          <div className="w-[45%] h-[100%]  flex flex-col justify-center items-center">
-            <div className="w-[70%] h-[50%]">
+        <div className="rounded-[10px] w-[95%] h-[220px] bg-[#002548] mb-4 flex justify-evenly items-center border bottom-1 px-[20px]">
+          <div className="w-[100%] h-[100%]  flex flex-row justify-between items-center bg-opacity-50">
+            <div className="flex flex-col justify-center items-center w-[48%] h-[60%] bg-[white] bg-opacity-20 text-white">
+                <div className="text-[25px] font-bold mb-[10px]"> Rooms</div>
+                <div className="text-[18px] font-md">421 234</div>
               
+            </div>
+            <div className="w-[47%] h-[60%] bg-[white] bg-opacity-20 overflow-y-scroll">
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Towel in 401</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Toilet in 201</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">staff lounge</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
             </div>
             
           </div>
@@ -23,31 +38,31 @@ const HomePage = () => {
         <div className="flex mb-[20px] px-[10px] gap-x-[20px]">
           <div
             className="w-[50%] rounded-[20px] p-[10px] border-[1px] rounded-lg"
-            onClick={() => router.push("/packaged")}
+            onClick={() => router.push("/staff/damaged")}
           >
             <img
-              className="mb-[10px] rounded-[20px]"
-              src="assets/packet.png"
+              className="mb-[10px] rounded-[20px] h-[70%]"
+              src="./assets/broken.jpg"
             ></img>
             <p className="w-full text-gray-600 text-center font-bold">
-              Scan Packet Food
+              Detect Damaged Items
             </p>
           </div>
           <div
             className="w-[50%] rounded-[20px] p-[10px] items-center border-[1px] rounded-lg"
-            onClick={() => router.push("/scanner")}
+            onClick={() => router.push("/staff/inventory")}
           >
             <img
-              className="mb-[10px] rounded-[20px]"
-              src="assets/food.png"
+              className="mb-[10px] rounded-[20px] h-[70%]"
+              src="./assets/minibar3.jpg"
             ></img>
             <p className="w-full text-gray-600 text-center font-bold">
-              Scan Cooked Food
+              Inventory
             </p>
           </div>
         </div>
         <div className="p-[10px] mb-[10px] mx-[10px] gap-x-[10px] items-center flex rounded-[15px] border-[1px]">
-          <img className="w-[60px] h-[60px]" src="assets/cooking.png" />
+          <img className="w-[60px] h-[60px] rounded-[50%]" src="./assets/room1.jpg" />
           <div>
             <p className="text-gray-600">
               Get AI generated recipies considering your preference and
@@ -91,14 +106,7 @@ const HomePage = () => {
             </div> */}
           </div>
         </div>
-        <div className="p-[10px]">
-          <div
-            className="rounded-lg border-[1px] shadow-lg border-gray-300 p-[10px]"
-            onClick={() => router.push("/maps")}
-          >
-            <img className="rounded-lg" src="assets/map.png"></img>
-          </div>
-        </div>
+      
       </div>
     </>
   );
