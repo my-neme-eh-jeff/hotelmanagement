@@ -104,7 +104,7 @@ const Inventory = () => {
                 body: formData,
                 redirect: "follow"
             };
-            fetch("http://localhost:5000/minibar", requestOptions)
+            fetch("https://hackniche-allstackers.onrender.com/minibar", requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
                     console.log(result.data)
@@ -127,7 +127,7 @@ const Inventory = () => {
                 body: formData,
                 redirect: "follow"
             };
-            fetch("http://localhost:5000/towels", requestOptions)
+            fetch("https://hackniche-allstackers.onrender.com/towels", requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
                     console.log(result.data[0].Towels)
@@ -151,7 +151,7 @@ const Inventory = () => {
                 body: formData,
                 redirect: "follow"
             };
-            fetch("http://localhost:5000/toilet", requestOptions)
+            fetch("https://hackniche-allstackers.onrender.com/toilet", requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
                     console.log(result)

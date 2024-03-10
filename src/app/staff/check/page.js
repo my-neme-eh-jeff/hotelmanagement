@@ -28,7 +28,7 @@ const ImageUpload = () => {
         redirect: "follow"
       };
 
-      fetch("http://localhost:5000/check", requestOptions)
+      fetch("https://hackniche-allstackers.onrender.com/check", requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log(result);

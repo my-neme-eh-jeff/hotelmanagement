@@ -22,7 +22,7 @@ const Damaged = () => {
             redirect: "follow",
         };
 
-        fetch("https://e6bb-34-143-233-30.ngrok-free.app/predictor2/", requestOptions)
+        fetch("https://b437-35-203-130-99.ngrok-free.app/predictor2/", requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log("Done");
@@ -43,7 +43,7 @@ const Damaged = () => {
             redirect: "follow",
         };
        
-        fetch("http://localhost:5000/damaged", requestOptions1)
+        fetch("https://hackniche-allstackers.onrender.com/damaged", requestOptions1)
             .then((response) => response.json())
             .then((result) => {
                 console.log(result.data[1].isAnythingBroken)

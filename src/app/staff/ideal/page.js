@@ -22,7 +22,7 @@ const Damaged = () => {
             redirect: "follow",
         };
 
-        fetch("https://5af4-34-173-238-94.ngrok-free.app/predictor/", requestOptions)
+        fetch("https://d1cb-104-196-230-36.ngrok-free.app/predictor/", requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log("Done");

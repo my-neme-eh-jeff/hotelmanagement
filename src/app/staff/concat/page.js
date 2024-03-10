@@ -5,8 +5,11 @@ import { ScaleLoader } from 'react-spinners';
 
 const Inventory = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [response, setResponse] = useState({});
+    const [url, setUrl] = useState("");
     const [value, setValue] = useState(1);
     const [loading, setLoading] = useState(false);
+ const [publicID,setPublicID] = useState()
 
     const onChange = (e) => {
         setValue(e.target.value);
@@ -17,10 +20,37 @@ const Inventory = () => {
         setSelectedImage(file);
     };
 
-    const handleUpload = () => {
+    const uploadToDB = async () =>{
+    const imageFiles = document.getElementById("whatsup");
+    let images =[]
+for (const file of imageFiles.files) {
+      const formImage = new FormData();
+      formImage.append("file", file);
+      formImage.append("folder", "imagesLOC");
+      formImage.append("upload_preset", "gkjdbtxf");
+
+      try {
+        const url =
+          "https://api.cloudinary.com/v1_1/" +
+          import.meta.env.VITE_CLOUD_NAME +
+          "/image/upload";
+        const resp = await publicAxios.post(url, formImage);
+        console.log(resp.data.secure_url);
+        images.push(resp.data.secure_url)
+        setPublicID((prev) => [...prev, resp.data.secure_url]);
+        
+    } catch (err) {
+        console.log(err);
+        alert("There was an error in uploading the iamge please try again!");
+        return;
+      }
+    }
+    }
+    const handleUpload = async () => {
         if (selectedImage) {
             setLoading(true);
             const formData = new FormData();
+            formData.append('room_number', "2");
             formData.append('image', selectedImage);
 
             const requestOptions = {
@@ -29,10 +59,12 @@ const Inventory = () => {
                 redirect: "follow"
             };
 
-            fetch("http://localhost:5000/minibar", requestOptions)
+            fetch("https://hackniche-allstackers.onrender.com/process_image", requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
-                    console.log(result.data);
+                    console.log(result.response);
+                    // setResponse(result.response.response)
+                    // setUrl(result.stitched_image);
                 })
                 .catch((error) => console.error(error))
                 .finally(() => {
@@ -44,11 +76,12 @@ const Inventory = () => {
     };
 
     return (
+        <>
         <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
             <h2 className="text-lg font-bold mb-4 text-center">Upload Images</h2>
             <div className="mb-4 flex justify-center items-center">
                 {selectedImage ?
-                    <img src={URL.createObjectURL(selectedImage)} alt="image" className="w-48 h-48 object-cover rounded-lg" />
+                    <img src={URL.createObjectURL(selectedImage)} alt="image" id="whatsup" className="w-48 h-48 object-cover rounded-lg" />
                     :
                     <div className="p-8 border-4 border-dashed border-gray-300 rounded-lg bg-gray-200 text-center">
                         <h2 className="text-xl font-semibold mb-4">Image Upload</h2>
@@ -77,10 +110,10 @@ const Inventory = () => {
             </div>
             <div className="mb-4 text-center">
                 <Radio.Group onChange={onChange} value={value}>
-                    <Radio value={1} className='text-[20px] font-bold'>A</Radio>
-                    <Radio value={2} className='text-[20px] font-bold'>B</Radio>
-                    <Radio value={3} className='text-[20px] font-bold'>C</Radio>
-                    <Radio value={4} className='text-[20px] font-bold'>D</Radio>
+                    <Radio value={1} className='text-[20px] font-bold'>1</Radio>
+                    <Radio value={2} className='text-[20px] font-bold'>2</Radio>
+                    <Radio value={3} className='text-[20px] font-bold'>3</Radio>
+                    <Radio value={4} className='text-[20px] font-bold'>4</Radio>
                 </Radio.Group>
             </div>
             {loading ? (
@@ -97,6 +130,12 @@ const Inventory = () => {
                 </button>
             )}
         </div>
+        <div className='my-15px'>
+            {url!=="" ? (<>
+            <img src={url} className='w-[150px] h-150px'/>
+            </>):null}
+        </div>
+        </>
     )
 }
 
