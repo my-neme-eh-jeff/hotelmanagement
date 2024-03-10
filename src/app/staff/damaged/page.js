@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from 'react';
 import { ClockCircleOutlined } from '@ant-design/icons';
-import { Timeline } from 'antd';
+import {Radio, Timeline } from 'antd';
 import { Checkbox } from 'antd';
 
 const Damaged = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [url,setUrl] = useState("")
     const [data, setDamagedData] = useState([]);
 
     const handleImageChange = (event) => {
@@ -18,36 +19,51 @@ const Damaged = () => {
         const requestOptions = {
             method: "POST",
             body: formData,
+            redirect: "follow",
         };
 
-        // fetch("http://localhost:5000/damaged", requestOptions)
-        //     .then((response) => response.json())
-        //     .then((result) => {
-        //         console.log(result.data[1].isAnythingBroken)
-        //         setDamagedData(result.data);
-        //     })
-        //     .catch((error) => console.error(error));
-        
-        fetch("https://3041-34-143-239-229.ngrok-free.app/predictor2/", requestOptions)
+        fetch("https://e6bb-34-143-233-30.ngrok-free.app/predictor2/", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            console.log("Done");
+            console.log(result);
+            setUrl(result.image_url);
+            // console.log(result.data)
+           
+            
+        })
+        .catch((error) => console.error(error));
+
+        const formData1 = new FormData();
+        formData1.append('image', file);
+
+        const requestOptions1 = {
+            method: "POST",
+            body: formData1,
+            redirect: "follow",
+        };
+       
+        fetch("http://localhost:5000/damaged", requestOptions1)
             .then((response) => response.json())
             .then((result) => {
-                console.log("Done");
-                console.log(result);
-                // console.log(result.data)
-                setSelectedImage(result)
-                
+                console.log(result.data[1].isAnythingBroken)
+                setDamagedData(result.data);
             })
             .catch((error) => console.error(error));
+        
+       
     };
 
     return (
         <div className='mt-[30px]'>
-            <Timeline mode="alternate" items={[
+            <div className='flex justify-center font-bold items-center mb-[30px] text-[30px]'>Detect Damage</div>
+            <Timeline mode="alternate" 
+            items={[
                 {
                     children: (
                         <>
                             {selectedImage ?
-                                <img src={URL.createObjectURL(selectedImage)} alt="image" className="w-[150px] h-[200px]" />
+                                <img src={URL.createObjectURL(selectedImage)} alt="image" className="w-[160px] h-[200px]" />
                                 :
                                 <div className="p-4 border-[3px] border-dotted border-gray-300 rounded-lg bg-gray-100 text-center flex flex-col justify-center items-center ">
                                     <h2 className="text-l font-semibold ">Image Upload</h2>
@@ -55,7 +71,7 @@ const Damaged = () => {
                                         <div className="cursor-pointer border-2 border-dotted h-[70%] w-[100%] border-gray-400 px-2 rounded-lg bg-white py-[30px]">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                className="h-20 w-20 mx-auto text-gray-500"
+                                                className="h-10 w-10 mx-auto text-gray-500"
                                                 height="20"
                                                 fill="gray"
                                                 viewBox="0 -960 960 960"
@@ -80,6 +96,14 @@ const Damaged = () => {
                     ),
                 },
                 {
+                    children: url !== "" ? (
+                        <>
+                             <img src={url} alt="image" className="w-[160px] h-[150px] ml-[13px]" />
+                        </>
+                    ) : null,
+                    color: 'green',
+                },
+                {
                     children: data.length !== 0 ? (
                         <>
                             <div className='p-3 border boder-gray rounded-[15px]  text-left'>
@@ -102,6 +126,7 @@ const Damaged = () => {
                     ) : null,
                     color: 'green',
                 },
+                
             ]} />
         </div>
     );
