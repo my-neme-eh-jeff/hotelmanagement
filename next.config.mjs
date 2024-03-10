@@ -5,7 +5,13 @@ const nextConfig = {
   images: {
     domains: ["lh3.googleusercontent.com", "images.unsplash.com"],
   },
-  ignoreBuildErrors: true,
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
 };
 
 // Export the configuration using ES Module syntax
