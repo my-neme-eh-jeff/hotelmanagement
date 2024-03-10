@@ -130,8 +130,8 @@ const Inventory = () => {
             fetch("http://localhost:5000/towels", requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
-                    console.log(result)
-                    setTowel(result.data)
+                    console.log(result.data[0].Towels)
+                    setTowel(result.data[0].Towels)
                 })
                 .catch((error) => console.error(error));
         } else {
@@ -357,6 +357,7 @@ const Inventory = () => {
                         </button>
                     )}
                 </div>
+
                 <div className='text-[20px] font-bold color-[#5c9af1]'>TOWELS : {towels}</div>
             </Modal>
             <Modal title="Toilet Accessories" okButtonProps={{ style: { background: "#5c9af1" } }} open={isModal2Open} onOk={handleOk2} onCancel={handleCancel2}>
