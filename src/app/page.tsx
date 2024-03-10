@@ -1,90 +1,79 @@
 // import React from "react";
 "use client";
-import { useRouter } from "next/router";
+import React,{ useState,useEffect } from "react"; // Import default styles
+import { useRouter } from "next/navigation";
+import { Checkbox } from 'antd';
 
 const HomePage = () => {
+  
   const router = useRouter();
+  const onChange = (e) => {
+
+  };  
+
   return (
     <>
       <div className="mt-[20px] flex flex-col justify-center items-center">
-        <div className="rounded-[10px] w-[95%] h-[220px] bg-white mb-4 flex justify-evenly items-center border bottom-1 ">
-          <div className="w-[45%] h-[100%]  flex flex-col justify-center items-center">
-            <div className="w-[70%] h-[50%]">
-              {/* <CircularProgressbar
-                value={(totalCalories / 1600) * 100}
-                text={totalCalories}
-                strokeWidth={8}
-                styles={buildStyles({
-                  pathColor: "#ffa500",
-                  textColor: "#ffa500",
-                  trailColor: "#f9f2e2",
-                  textSize: "1.5rem", // Set your desired text size
-                  fontWeight: "bold",
-                  pathTransitionDuration: 0.6, // Set your desired color for the trail
-                })}
-              /> */}
+        <div className="rounded-[10px] w-[95%] h-[220px] bg-[#002548] mb-4 flex justify-evenly items-center border bottom-1 px-[20px]">
+          <div className="w-[100%] h-[100%]  flex flex-row justify-between items-center bg-opacity-50">
+            <div className="flex flex-col justify-center items-center w-[48%] h-[60%] bg-[white] bg-opacity-20 text-white">
+                <div className="text-[25px] font-bold mb-[10px]"> Rooms</div>
+                <div className="text-[18px] font-md">421 234</div>
+              
             </div>
-            <button
-              className="bg-blue-400 mt-7   h-8 text-white rounded-[25px] px-3 font-bold transition duration-300 hover:bg-blue-600"
-              onClick={() => {
-                router.push("/calory");
-              }}
-            >
-              Add Calori
-            </button>
-          </div>
-          <div className="w-[50%] h-[100%] bg-slate-50">
-            <div className="w-[183px] h-[183px] mx-auto mt-4">
-              <div className=" pt-0 rounded-xl w-full h-full my-auto shadow-xl">
-                <canvas id="myChart" width={200} height={200}></canvas>
-              </div>
+            <div className="w-[47%] h-[60%] bg-[white] bg-opacity-20 overflow-y-scroll">
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Towel in 401</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Toilet in 201</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">staff lounge</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
+            <Checkbox onChange={onChange} className="text-[18px] font-md text-white">Checkbox</Checkbox>
             </div>
+            
           </div>
+          
         </div>
         <div className="flex mb-[20px] px-[10px] gap-x-[20px]">
           <div
-            className="w-[50%] rounded-[20px] p-[10px] border-[1px] rounded-lg"
-            onClick={() => {
-              router.push("/packaged");
-            }}
+            className="w-[50%] rounded-[20px] p-[10px] border-[1px] rounded-lg cursor-pointer"
+            onClick={() => {router.push("/staff/damaged")}}
           >
             <img
-              className="mb-[10px] rounded-[20px]"
-              src="assets/packet.png"
+              className="mb-[10px] rounded-[20px] h-[70%]"
+              src="./assets/broken.jpg"
             ></img>
             <p className="w-full text-gray-600 text-center font-bold">
-              Scan Packet Food
+              Detect Damaged Items
             </p>
           </div>
           <div
-            className="w-[50%] rounded-[20px] p-[10px] items-center border-[1px] rounded-lg"
-            onClick={() => {
-              router.push("/scanner");
-            }}
+            className="w-[50%] rounded-[20px] p-[10px] items-center border-[1px] rounded-lg cursor-pointer"
+            onClick={() => {router.push("/staff/inventory")}}
           >
             <img
-              className="mb-[10px] rounded-[20px]"
-              src="assets/food.png"
+              className="mb-[10px] rounded-[20px] h-[70%]"
+              src="./assets/minibar3.jpg"
             ></img>
             <p className="w-full text-gray-600 text-center font-bold">
-              Scan Cooked Food
+              Inventory
             </p>
           </div>
         </div>
         <div className="p-[10px] mb-[10px] mx-[10px] gap-x-[10px] items-center flex rounded-[15px] border-[1px]">
-          <img className="w-[60px] h-[60px]" src="assets/cooking.png" />
+          <img className="w-[60px] h-[60px] rounded-[50%]" src="./assets/room1.jpg" />
           <div>
             <p className="text-gray-600">
-              Get AI generated recipies considering your preference and
-              allergies
+              Get an AI generated ideal image of a Dull, Messy Room.
             </p>
             <a
               onClick={() => {
-                router.push("/recipes");
+                router.push("/staff/ideal");
               }}
               className="bold text-blue-500 font-bold"
             >
-              Get Recipes &rarr;{" "}
+              Get Image &rarr;{" "}
             </a>
           </div>
         </div>
@@ -92,9 +81,7 @@ const HomePage = () => {
           <div className="flex py-[15px] rounded-[10px] border-[1px] justify-around">
             <div
               className="flex w-[33%] flex-col items-center"
-              onClick={() => {
-                router.push("/report");
-              }}
+              
             >
               <div className="w-[60px] h-[60px] flex justify-center items-center rounded-full border-[1px] border-gray-300">
                 <img className="w-[40px]" src="assets/warning.png" />
@@ -103,9 +90,7 @@ const HomePage = () => {
             </div>
             <div
               className="flex w-[33%] flex-col items-center"
-              onClick={() => {
-                router.push("/alternate");
-              }}
+             
             >
               <div className="w-[60px] h-[60px] flex justify-center items-center rounded-full border-[1px] border-gray-300">
                 <img className="w-[40px]" src="assets/rice.png" />
@@ -120,16 +105,7 @@ const HomePage = () => {
             </div> */}
           </div>
         </div>
-        <div className="p-[10px]">
-          <div
-            className="rounded-lg border-[1px] shadow-lg border-gray-300 p-[10px]"
-            onClick={() => {
-              router.push("/maps");
-            }}
-          >
-            <img className="rounded-lg" src="assets/map.png"></img>
-          </div>
-        </div>
+      
       </div>
     </>
   );
