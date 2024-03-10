@@ -1,6 +1,28 @@
-import React from "react";
+"use client";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Rate } from "antd";
+import { Loader2 } from "lucide-react";
+import { ScaleLoader } from "react-spinners";
 
 const Analytics = () => {
+  const [reviewData, setReviewData] = useState([]);
+  const [loadingForReviewData, setLoadingForReviewData] = useState();
+  useEffect(() => {
+    const getReviewData = async () => {
+      try {
+        setLoadingForReviewData(true);
+        const { data } = await axios.get("http://localhost:3002/reviews");
+        console.log(data);
+        setReviewData(data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoadingForReviewData(false);
+      }
+    };
+    getReviewData();
+  }, []);
   const overview = [
     {
       title: "Today's",
@@ -93,6 +115,16 @@ const Analytics = () => {
       name: "Elon Musk",
       feedback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
+    {
+      id: "A104",
+      name: "Elon Musk",
+      feedback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: "A104",
+      name: "Elon Musk",
+      feedback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
   ];
   return (
     <>
@@ -170,22 +202,31 @@ const Analytics = () => {
             className="max-h-[200px] overflow-y-auto"
             style={{ scrollbarWidth: "none", "-ms-overflow-style": "none" }}
           >
-            {customerFeedback.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between mb-[10px] border-b-[1px] pb-[5px] border-gray-300"
-              >
-                <div className="max-w-[80%]">
-                  <p className="text-gray-500">{item.name}</p>
-                  {/* give me code for ellipse if feedback is too long */}
-
-                  <p className="text-gray-500 font-light truncate">
-                    {item.feedback}
-                  </p>
-                </div>
-                <p className="text-gray-500">{item.id}</p>
+            {loadingForReviewData ? (
+              <div className="flex justify-center items-center ">
+                <ScaleLoader color="#2563eb" />
               </div>
-            ))}
+            ) : (
+              reviewData.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between mb-[10px] border-b-[1px] pb-[5px] border-gray-300"
+                >
+                  <div className="max-w-[80%]">
+                    <Rate
+                      className="place-items-center place-content-center mx-auto"
+                      disabled
+                      defaultValue={item.rating}
+                    />
+                    <p className="text-gray-500">{item.nameofPerson}</p>
+                    <p className="text-gray-500 font-light truncate">
+                      {item.review}
+                    </p>
+                  </div>
+                  <p className="text-gray-500">{"Room" + item.roomNumber}</p>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

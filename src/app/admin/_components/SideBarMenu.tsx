@@ -12,6 +12,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { ScaleLoader } from "react-spinners";
 
 // Define types for TypeScript (optional but recommended for better type checking)
 type MenuItem = Required<MenuProps>["items"][number];
@@ -100,7 +101,7 @@ export default function SideBarMenu() {
 
   return loading ? (
     <div className="flex justify-center items-center min-h-screen bg-white">
-      <Loader2 className="animate-spin" />
+      <ScaleLoader color="#2563eb" />{" "}
     </div>
   ) : (
     <Menu

@@ -12,6 +12,7 @@ import { EChartsCoreOption } from "echarts";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
+import { ScaleLoader } from "react-spinners";
 
 echarts.use([
   TitleComponent,
@@ -86,7 +87,7 @@ export default function AllStaffBarChart() {
     />
   ) : (
     <div className="flex justify-center items-center ">
-      <Loader2 className="animate-spin" />
+      <ScaleLoader color="#2563eb" />
     </div>
   );
 }
