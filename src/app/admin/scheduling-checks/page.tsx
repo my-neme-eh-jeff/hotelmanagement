@@ -25,10 +25,10 @@ export default function SchedulingChecks() {
         const floors = Array.from(
           new Set(data.map((item: any) => item.floor))
         ).map((floor) => ({
-          value: floor.toString(),
+          value: floor?.toString(),
           label: `Floor ${floor}`,
         }));
-        setFloorOptions(floors);
+        setFloorOptions(floors as any);
         setDataFromApi(data);
       } catch (err) {
         console.log(err);
