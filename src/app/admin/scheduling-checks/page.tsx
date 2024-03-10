@@ -22,9 +22,12 @@ export default function SchedulingChecks() {
         const { data } = await axios.get(
           "https://loc6.pythonanywhere.com/inventory/room/"
         );
-        const floors = Array.from(new Set(data.map((item) => item.floor))).map(
-          (floor) => ({ value: floor.toString(), label: `Floor ${floor}` })
-        );
+        const floors = Array.from(
+          new Set(data.map((item: any) => item.floor))
+        ).map((floor) => ({
+          value: floor.toString(),
+          label: `Floor ${floor}`,
+        }));
         setFloorOptions(floors);
         setDataFromApi(data);
       } catch (err) {
@@ -95,7 +98,9 @@ export default function SchedulingChecks() {
         <div className="flex w-[35px] h-[20px]">
           <div
             className={`flex-1 bg-[#964B00] w-[35px] h-[20px] relative ${
-              room.room_details.ocuupied ? "border-green-400 border-dashed border-2" : "border-"
+              room.room_details.ocuupied
+                ? "border-green-400 border-dashed border-2"
+                : "border-"
             }`}
             style={{
               borderRadius: `${
