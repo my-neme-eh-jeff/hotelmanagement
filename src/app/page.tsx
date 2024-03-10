@@ -1,70 +1,9 @@
 // import React from "react";
 "use client";
-import React,{ useState,useEffect } from "react"; // Import default styles
 import { useRouter } from "next/router";
 
 const HomePage = () => {
-  
   const router = useRouter();
-  
-
-  // useEffect(() => {
-  //   var storedCalories =
-  //     typeof window !== "undefined"
-  //       ? localStorage.getItem("dailyCalories")
-  //       : null;
-
-  //   // const storedCalories = localStorage.getItem('dailyCalories');
-  //   // storedCalories=parseInt(storedCalories)+parseInt(totalCalories);
-  //   // const calory=localStorage.getItem('dailyCalories');
-  //   setTotalCalories(storedCalories);
-  // }, []);
-
-  // set dailyCalories variables in the local storage if not present
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     if (!localStorage.getItem("dailyCalories")) {
-  //       localStorage.setItem("dailyCalories", 0);
-  //     }
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   var ctx = document.getElementById("myChart").getContext("2d");
-  //   var myChart = new Chart(ctx, {
-  //     type: "line",
-  //     data: {
-  //       labels: [
-  //         "Sunday",
-  //         "Monday",
-  //         "Tuesday",
-  //         "Wednesday",
-  //         "Thursday",
-  //         "Friday",
-  //         "Saturday",
-  //       ],
-  //       datasets: [
-  //         {
-  //           data: [100, 180, 260, 140, 200, 130, 250],
-  //           label: "Calorie",
-  //           borderColor: "rgb(255,165,0)",
-  //           backgroundColor: "rgb(255,165,0,0.1)",
-  //         },
-  //       ],
-  //     },
-  //     options: {
-  //       scales: {
-  //         y: {
-  //           beginAtZero: false,
-  //           ticks: {
-  //             stepSize: 50,
-  //           },
-  //         },
-  //       },
-  //     },
-  //   });
-  // }, []);
-
   return (
     <>
       <div className="mt-[20px] flex flex-col justify-center items-center">
@@ -87,7 +26,9 @@ const HomePage = () => {
             </div>
             <button
               className="bg-blue-400 mt-7   h-8 text-white rounded-[25px] px-3 font-bold transition duration-300 hover:bg-blue-600"
-              onClick={() => router.push("/calory")}
+              onClick={() => {
+                router.push("/calory");
+              }}
             >
               Add Calori
             </button>
@@ -103,7 +44,9 @@ const HomePage = () => {
         <div className="flex mb-[20px] px-[10px] gap-x-[20px]">
           <div
             className="w-[50%] rounded-[20px] p-[10px] border-[1px] rounded-lg"
-            onClick={() => router.push("/packaged")}
+            onClick={() => {
+              router.push("/packaged");
+            }}
           >
             <img
               className="mb-[10px] rounded-[20px]"
@@ -115,7 +58,9 @@ const HomePage = () => {
           </div>
           <div
             className="w-[50%] rounded-[20px] p-[10px] items-center border-[1px] rounded-lg"
-            onClick={() => router.push("/scanner")}
+            onClick={() => {
+              router.push("/scanner");
+            }}
           >
             <img
               className="mb-[10px] rounded-[20px]"
@@ -147,7 +92,9 @@ const HomePage = () => {
           <div className="flex py-[15px] rounded-[10px] border-[1px] justify-around">
             <div
               className="flex w-[33%] flex-col items-center"
-              onClick={() => router.push("/report")}
+              onClick={() => {
+                router.push("/report");
+              }}
             >
               <div className="w-[60px] h-[60px] flex justify-center items-center rounded-full border-[1px] border-gray-300">
                 <img className="w-[40px]" src="assets/warning.png" />
@@ -156,7 +103,9 @@ const HomePage = () => {
             </div>
             <div
               className="flex w-[33%] flex-col items-center"
-              onClick={() => router.push("/alternate")}
+              onClick={() => {
+                router.push("/alternate");
+              }}
             >
               <div className="w-[60px] h-[60px] flex justify-center items-center rounded-full border-[1px] border-gray-300">
                 <img className="w-[40px]" src="assets/rice.png" />
@@ -174,7 +123,9 @@ const HomePage = () => {
         <div className="p-[10px]">
           <div
             className="rounded-lg border-[1px] shadow-lg border-gray-300 p-[10px]"
-            onClick={() => router.push("/maps")}
+            onClick={() => {
+              router.push("/maps");
+            }}
           >
             <img className="rounded-lg" src="assets/map.png"></img>
           </div>
